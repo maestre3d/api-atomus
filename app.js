@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var userRoutes = require('./routes/user.js');
 var teacherRoutes = require('./routes/teacher');
 var materialRoutes = require('./routes/material');
+var courseRoutes = require('./routes/course');
 
 var app = express();
 
@@ -30,5 +31,6 @@ app.use((req, res, next)=>{
 app.use('/api', userRoutes);
 app.use('/api', teacherRoutes);
 app.use('/api', materialRoutes);
+app.use('/api', courseRoutes);
 
 module.exports = app;
