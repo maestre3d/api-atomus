@@ -6,20 +6,19 @@ var fs = require('fs');
 var path = require('path');
 
 // Model(s)
-var User = require('../models/user');
+var Teacher = require('../models/teacher');
 
 // Misc
 const apiMsg = 'Server Error.';
 const saltRounds = 10;
 
-function newUser(req, res){
-    var user = new User();
+function newTeacher(req, res){
+    var user = new Teacher();
     var params = req.body;
 
     user.username = params.username;
     user.name = params.name;
     user.surname = params.surname;
-    user.grade = params.grade;
     user.image = null;
 
     if(params.username && params.password){
@@ -28,8 +27,8 @@ function newUser(req, res){
                 res.status(500).send({message:apiMsg});
             }else{
                 user.password = hash;
-                if(user.name && user.surname && user.grade){
-                    User.findOne({username:user.username}, (err, found)=>{
+                if(user.name && user.surname){
+                    Teacher.findOne({username:user.username}, (err, found)=>{
                         if(err){
                             res.status(500).send({message:apiMsg});
                         }else{
@@ -46,7 +45,7 @@ function newUser(req, res){
                                     }
                                 });
                             }else{
-                                res.status(406).send({message:"Usuario ya ha sido creado."});
+                                res.status(406).send({message:"Usuario ya creado."});
                             }
                         }
                     });
@@ -60,7 +59,7 @@ function newUser(req, res){
     }
 }
 
-function logUser(req, res){
+function logTeacher(req, res){
     var params = req.body;
     var hash;
 
@@ -68,7 +67,7 @@ function logUser(req, res){
     var password = params.password;
 
     if(params.username && params.password){
-        User.findOne({username:username}, (err, user)=>{
+        Teacher.findOne({username:username}, (err, user)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
@@ -95,7 +94,7 @@ function logUser(req, res){
     }
 }
 
-function updateUser(req, res){
+function updateTeacher(req, res){
     var userId = req.params.id;
     var user = req.body;
 
@@ -104,12 +103,12 @@ function updateUser(req, res){
     }
 
 
-    User.findOne({username:user.username}, (err, found)=>{
+    Teacher.findOne({username:user.username}, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
             if(!found){
-                User.findByIdAndUpdate(userId, user, (err, updated)=>{
+                Teacher.findByIdAndUpdate(userId, user, (err, updated)=>{
                     if(err){
                         res.status(500).send({message:apiMsg});
                     }else{
@@ -127,10 +126,10 @@ function updateUser(req, res){
     });
 }
 
-function deleteUser(req, res){
+function deleteTeacher(req, res){
     var userId = req.params.id;
 
-    User.findByIdAndRemove(userId, (err, deleted)=>{
+    Teacher.findByIdAndRemove(userId, (err, deleted)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -143,8 +142,8 @@ function deleteUser(req, res){
     });
 }
 
-function getUsers(req, res){
-    User.find((err, users)=>{
+function getTeachers(req, res){
+    Teacher.find((err, users)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -157,10 +156,10 @@ function getUsers(req, res){
     });
 }
 
-function getUser(req, res){
+function getTeacher(req, res){
     var userId = req.params.id;
 
-    User.findById(userId, (err, found)=>{
+    Teacher.findById(userId, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -178,7 +177,7 @@ function uploadImage(req, res){
     var file_name = 'Sin subir.';
 
     if(req.files){
-        var path_file = './uploads/users/';
+        var path_file = './uploads/teachers/';
         var file_path = req.files.image.path;
         var file_split = file_path.split('\\');
         var file_name = file_split[2];
@@ -186,7 +185,7 @@ function uploadImage(req, res){
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
 
-        User.findById(userId, (err, found)=>{
+        Teacher.findById(userId, (err, found)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
@@ -195,7 +194,7 @@ function uploadImage(req, res){
                 }else{
                     path_file = path_file + found.image;
                     if( file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' ){
-                        User.findByIdAndUpdate(userId, {image:file_name},(err, updated)=>{
+                        Teacher.findByIdAndUpdate(userId, {image:file_name},(err, updated)=>{
                             if(err){
                                 res.status(500).send({message:apiMsg});
                             }else{
@@ -230,7 +229,7 @@ function uploadImage(req, res){
 function getImageFile(req, res){
     var imageFile = req.params.imageFile;
 
-    var path_file = './uploads/users/' + imageFile;
+    var path_file = './uploads/teachers/' + imageFile;
 
     fs.exists(path_file, function(exists){
         if(exists){
@@ -242,12 +241,12 @@ function getImageFile(req, res){
 }
 
 module.exports = {
-    newUser,
-    logUser,
-    updateUser,
-    deleteUser,
-    getUsers,
-    getUser,
+    newTeacher,
+    logTeacher,
+    updateTeacher,
+    deleteTeacher,
+    getTeachers,
+    getTeacher,
     uploadImage,
     getImageFile
 };

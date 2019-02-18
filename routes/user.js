@@ -20,6 +20,6 @@ api.get('/user/pic/:imageFile', controller.getImageFile);
 
 // Misc
 api.get('/user', mdAuth.ensureAuth, controller.getUsers);
-api.get('user/:id', mdAuth.ensureAuth, controller.getUser);
+api.get('/user/:id', mdAuth.ensureAuth, controller.getUser);
 
 module.exports = api;
