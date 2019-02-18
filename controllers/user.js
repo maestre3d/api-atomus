@@ -99,6 +99,11 @@ function updateUser(req, res){
     var userId = req.params.id;
     var user = req.body;
 
+    if(userId != req.user.sub){
+        return res.status(401).send({message:"Acceso denegado."});
+    }
+
+
     User.findOne({username:user.username}, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
@@ -168,6 +173,71 @@ function getUser(req, res){
     });
 }
 
+function uploadImage(req, res){
+    var userId = req.params.id;
+    var file_name = 'Sin subir.';
+
+    if(req.files){
+        var path_file = './uploads/users/';
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('\\');
+        var file_name = file_split[2];
+
+        var ext_split = file_name.split('\.');
+        var file_ext = ext_split[1];
+
+        User.findById(userId, (err, found)=>{
+            if(err){
+                res.status(500).send({message:apiMsg});
+            }else{
+                if(!found){
+                    res.status(404).send({message:"Usuario no encontrado."});
+                }else{
+                    path_file = path_file + found.image;
+                    if( file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' ){
+                        User.findByIdAndUpdate(userId, {image:file_name},(err, updated)=>{
+                            if(err){
+                                res.status(500).send({message:apiMsg});
+                            }else{
+                                if(!updated){
+                                    res.status(404).send({message:"Error al subir archivo."});
+                                }else{
+                                    if(found.image === null){
+                                        res.status(200).send(updated);
+                                    }else{
+                                        fs.unlink(path_file, (err)=>{
+                                            if(err) throw err;
+                                            //console.log('Successfully deleted file.');
+                                        });
+                                        res.status(200).send(updated);
+                                    }
+                                }
+                            }
+                        });
+                    }else{
+                        res.status(406).send({message:"Extensión de archivo no soportada."});
+                    }
+                }
+            }
+        });
+    }else{
+        res.status(404).send({message:"Archivo no subido."});
+    }
+}
+
+function getImageFile(req, res){
+    var imageFile = req.params.imageFile;
+
+    var path_file = './uploads/users/' + imageFile;
+
+    fs.exists(path_file, function(exists){
+        if(exists){
+            res.sendFile(path.resolve(path_file));
+        }else{
+            res.status(404).send({message:"Archivo no encontrado."});
+        }
+    });
+}
 
 module.exports = {
     newUser,
@@ -175,5 +245,7 @@ module.exports = {
     updateUser,
     deleteUser,
     getUsers,
-    getUser
+    getUser,
+    uploadImage,
+    getImageFile
 };
