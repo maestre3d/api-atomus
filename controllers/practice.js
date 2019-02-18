@@ -105,7 +105,9 @@ function deletePractice(req, res){
 }
 
 function getPractices(req, res){
-    Practice.find((err, practices)=>{
+    var find = Practice.find();
+
+    find.populate({path: 'material'}).exec((err, practices)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -115,14 +117,15 @@ function getPractices(req, res){
                 res.status(200).send(practices);
             }
         }
-    })
+    });
 }
 
 function getPractice(req, res){
     var pracId = req.params.id;
+    var find = Practice.findById(pracId);
 
-    Practice.findById(pracId, (err, practice)=>{
-       if(err){
+    find.populate({path: 'material'}).exec((err, practice)=>{
+        if(err){
             res.status(500).send({message:apiMsg});
        }else{
            if(!practice){
@@ -162,11 +165,59 @@ function getExp(req, res){
     });
 }
 
+function addMaterial(req, res){
+    var pracId = req.params.id;
+    var practice = req.body;
+
+    if(practice.material){
+        Practice.findByIdAndUpdate(pracId,
+            ({'material': { '$ne': practice.material}},
+            {'$addToSet': {'material': practice.material}}),
+            (err, saved)=>{
+                if(err){
+                    res.status(500).send({message:apiMsg});
+                }else{
+                    if(!saved){
+                        res.status(404).send({message:"Error al añadir material."})
+                    }else{
+                        res.status(200).send(saved);
+                    }
+                }
+            }
+        );
+    }else{
+        res.status(404).send({message:"Valor inválido."})
+    }
+}
+
+function addMaterials(req, res){
+    var pracId = req.params.id;
+    var practice = req.body;
+
+    if(practice.material){
+        Practice.findByIdAndUpdate(pracId,
+            ({'material': { '$ne': practice.material}},
+            {'$addToSet': {'material': practice.material}}),
+            (err, saved)=>{
+                if(err){
+                    res.status(500).send({message:apiMsg});
+                }else{
+                    if(!saved){
+                        res.status(404).send({message:"Error al añadir material."})
+                    }else{
+                        res.status(200).send(saved);
+                    }
+                }
+            }
+        );
+    }else{
+        res.status(404).send({message:"Valor inválido."})
+    }
+}
+
 function uploadFile(req, res){
     var pracId = req.params.id;
     var file_name = 'Sin subir.';
-
-
 
     if(req.files){
         var path_file = './uploads/practices/';
@@ -236,6 +287,8 @@ module.exports = {
     newPractice,
     updatePractice,
     deletePractice,
+    addMaterial,
+    addMaterials,
     getPractices,
     getPractice,
     getNonExp,

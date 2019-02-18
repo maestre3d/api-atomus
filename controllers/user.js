@@ -159,8 +159,9 @@ function getUsers(req, res){
 
 function getUser(req, res){
     var userId = req.params.id;
+    var find = User.findById(userId);
 
-    User.findById(userId, (err, found)=>{
+    find.populate({path:'course'}).exec((err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -172,6 +173,72 @@ function getUser(req, res){
         }
     });
 }
+
+function addCourse(req, res){
+    var userId = req.params.id;
+    var user = req.body;
+
+    if(user.course){
+        User.findOne( {$and: [{course: user.course}, { _id: userId }]} , (err, found)=>{
+            if(err){
+                res.status(500).send({message:apiMsg});
+            }else{
+                if(found){
+                    res.status(404).send({message:"Usuario ya está inscrito al curso."});
+                }else{
+                    User.findByIdAndUpdate(userId, 
+                        ({'course': { '$ne': user.course } }, 
+                        {'$addToSet': { 'course': user.course } }), 
+                        (err, saved)=>{
+                            if(err){
+                                res.status(500).send({message:apiMsg});
+                            }else{
+                                if(!saved){
+                                    res.status(404).send({message:"Error al añadir curso."});
+                                }else{
+                                    res.status(200).send(saved);
+                                }
+                            }
+                    });
+                }
+            }
+        });
+    }else{
+        res.status(404).send({message:"Valor inválido."});
+    }
+}
+
+function removeCourse(req, res){
+    var userId = req.params.id;
+    var user = req.body;
+
+    if(user.course){
+        User.findOne( {$and: [{course: user.course}, {_id: userId}]}, (err, found)=>{
+            if(err){
+                res.status(500).send({message:apiMsg});
+            }else{
+                if(!found){
+                    res.status(404).send({message:"No se encontró curso."});
+                }else{
+                    User.findByIdAndUpdate(userId, {$pull:{ 'course': user.course }}, (err, upUser)=>{
+                        if(err){
+                            res.status(500).send({message:apiMsg});
+                        }else{
+                            if(!upUser){
+                                res.status(404).send({message:"Error al borrar curso."});
+                            }else{
+                                res.status(200).send(upUser);
+                            }
+                        }
+                    } );
+                }
+            }
+        });
+    }else{
+        res.status(404).send({message:"Valor inválido."});
+    }
+}
+
 
 function uploadImage(req, res){
     var userId = req.params.id;
@@ -248,6 +315,8 @@ module.exports = {
     deleteUser,
     getUsers,
     getUser,
+    addCourse,
+    removeCourse,
     uploadImage,
     getImageFile
 };

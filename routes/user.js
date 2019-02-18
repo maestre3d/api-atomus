@@ -21,5 +21,7 @@ api.get('/user/pic/:imageFile', controller.getImageFile);
 // Misc
 api.get('/user', mdAuth.ensureAuth, controller.getUsers);
 api.get('/user/:id', mdAuth.ensureAuth, controller.getUser);
+api.post('/user/add/course/:id', mdAuth.ensureAuth, controller.addCourse);
+api.post('/user/del/course/:id', mdAuth.ensureAuth, controller.removeCourse);
 
 module.exports = api;

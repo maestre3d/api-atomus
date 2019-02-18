@@ -11,7 +11,8 @@ api.put('/course/:id', mdAuth.ensureAuth, controller.updateCourse);
 api.delete('/course/:id', mdAuth.ensureAuth, controller.deleteCourse);
 
 // Misc
+api.get('/course/practice/:id', mdAuth.ensureAuth, controller.getPractices);
 api.get('/course', mdAuth.ensureAuth, controller.getCourses);
-api.get('/course/:id', mdAuth.ensureAuth, controller.newCourse)
+api.get('/course/:id', mdAuth.ensureAuth, controller.newCourse);
 
 module.exports = api;

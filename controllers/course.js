@@ -2,6 +2,7 @@
 // Model(s)
 var Course = require('../models/course');
 var Teacher = require('../models/teacher');
+var Practice = require('../models/practice');
 
 // Misc
 var apiMsg = 'Server Error.';
@@ -139,14 +140,30 @@ function getCourse(req, res){
             }
         }
     });
-
 }
 
+function getPractices(req, res){
+    var pracId = req.params.id;
+    var find = Practice.find({course: pracId}).sort('expDate');
+
+    find.populate({path: 'material'}).exec((err, courses)=>{
+        if(err){
+            res.status(500).send({message:apiMsg});
+        }else{
+            if(!courses){
+                res.status(404).send({message:"No se encontraron prácticas."});
+            }else{
+                res.status(200).send(courses);
+            }
+        }
+    });
+}
 
 module.exports = {
     newCourse,
     updateCourse,
     deleteCourse,
     getCourses,
-    getCourse
+    getCourse,
+    getPractices
 };

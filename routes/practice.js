@@ -18,6 +18,8 @@ api.post('/practice/upload/:id', [mdAuth.ensureAuth, md_upload], controller.uplo
 api.get('/practice/file/:docFile', mdAuth.ensureAuth, controller.getFile);
 
 // Misc
+api.post('/practice/:id', mdAuth.ensureAuth, controller.addMaterial);
+api.post('/practice/materials/:id', mdAuth.ensureAuth, controller.addMaterials);
 api.get('/practice', mdAuth.ensureAuth, controller.getNonExp);
 api.get('/practice/exp', mdAuth.ensureAuth, controller.getExp);
 api.get('/practice/all', mdAuth.ensureAuth, controller.getPractices);
