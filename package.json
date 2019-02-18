@@ -1,0 +1,35 @@
+{
+  "name": "api_atomus",
+  "version": "1.0.0",
+  "description": "Modulo API para la aplicacion de la Facultad de Ciencias Quimicas de la Universidad Autonoma de Chihuahua ()\u001b[DUACH).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index,js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maestre3d/api-atomus.git"
+  },
+  "author": "Alonso R",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maestre3d/api-atomus/issues"
+  },
+  "homepage": "https://github.com/maestre3d/api-atomus",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.5",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.13",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "nodemon": "^1.18.10"
+  }
+}
