@@ -56,7 +56,7 @@ function newUser(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -91,7 +91,7 @@ function logUser(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -121,7 +121,7 @@ function updateUser(req, res){
                     }
                 });
             }else{
-                res.status(406).send({message:"Usuario ya creado."});
+                res.status(400).send({message:"Usuario ya creado."});
             }
         }
     });
@@ -184,7 +184,7 @@ function addCourse(req, res){
                 res.status(500).send({message:apiMsg});
             }else{
                 if(found){
-                    res.status(404).send({message:"Usuario ya está inscrito al curso."});
+                    res.status(400).send({message:"Usuario ya está inscrito al curso."});
                 }else{
                     User.findByIdAndUpdate(userId, 
                         ({'course': { '$ne': user.course } }, 
@@ -204,7 +204,7 @@ function addCourse(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Valor inválido."});
+        res.status(400).send({message:"Valor inválido."});
     }
 }
 
@@ -235,7 +235,7 @@ function removeCourse(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Valor inválido."});
+        res.status(400).send({message:"Valor inválido."});
     }
 }
 
@@ -266,6 +266,7 @@ function uploadImage(req, res){
                             if(err){
                                 res.status(500).send({message:apiMsg});
                             }else{
+                                
                                 if(!updated){
                                     res.status(404).send({message:"Error al subir archivo."});
                                 }else{
@@ -290,7 +291,7 @@ function uploadImage(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Archivo no subido."});
+        res.status(400).send({message:"Archivo no subido."});
     }
 }
 

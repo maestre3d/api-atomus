@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 
 var LabSchema = Schema({
     name: String,
-    description: String,
-    course: {type: Schema.ObjectId, ref: 'Course'}
+    description: String
 });
 
 module.exports = mongoose.model('Lab', LabSchema);

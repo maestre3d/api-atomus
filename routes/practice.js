@@ -19,10 +19,13 @@ api.get('/practice/file/:docFile', mdAuth.ensureAuth, controller.getFile);
 
 // Misc
 api.post('/practice/:id', mdAuth.ensureAuth, controller.addMaterial);
-api.post('/practice/materials/:id', mdAuth.ensureAuth, controller.addMaterials);
+api.put('/practice/del/:id', mdAuth.ensureAuth, controller.removeMaterial);
 api.get('/practice', mdAuth.ensureAuth, controller.getNonExp);
 api.get('/practice/exp', mdAuth.ensureAuth, controller.getExp);
 api.get('/practice/all', mdAuth.ensureAuth, controller.getPractices);
 api.get('/practice/:id', mdAuth.ensureAuth, controller.getPractice);
+
+// Home Feed
+api.get('/practice/course/:id', mdAuth.ensureAuth, controller.getNonExpCourse);
 
 module.exports = api;

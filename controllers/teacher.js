@@ -55,7 +55,7 @@ function newTeacher(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -90,7 +90,7 @@ function logTeacher(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -120,7 +120,7 @@ function updateTeacher(req, res){
                     }
                 });
             }else{
-                res.status(406).send({message:"Usuario ya creado."});
+                res.status(400).send({message:"Usuario ya creado."});
             }
         }
     });
@@ -222,7 +222,7 @@ function uploadImage(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Archivo no subido."});
+        res.status(400).send({message:"Archivo no subido."});
     }
 }
 

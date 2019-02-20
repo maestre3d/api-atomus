@@ -7,7 +7,7 @@ var OrderSchema = Schema({
     expDate: Number,
     user: {type: Schema.ObjectId, ref: 'User'},
     practice: {type: Schema.ObjectId, ref: 'Practice'},
-    materials: [{type: Schema.ObjectId, ref: 'Materials'}]
+    material: [{type: Schema.ObjectId, ref: 'Material'}]
 });
 
 module.exports = mongoose.model('Order', OrderSchema);

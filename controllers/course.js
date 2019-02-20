@@ -14,6 +14,7 @@ function newCourse(req, res){
     course.name = params.name;
     course.grade = params.grade;
     course.teacher = params.teacher;
+    course.lab = null;
 
     if(req.user.grade){
         return res.status(403).send({message:"Acceso denegado."});
@@ -25,7 +26,7 @@ function newCourse(req, res){
                 res.status(500).send({message:apiMsg});
             }else{
                 if(found){
-                    res.status(406).send({message:"Curso ya creado."});
+                    res.status(400).send({message:"Curso ya creado."});
                 }else{
                     Teacher.findById(course.teacher, (err, teacher)=>{
                         if(err){
@@ -52,7 +53,7 @@ function newCourse(req, res){
             }
         });
     }else{
-        res.status(403).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -70,7 +71,7 @@ function updateCourse(req, res){
                 res.status(500).send({message:apiMsg});
             }else{
                 if(found){
-                    res.status(406).send({message:"Curso ya creado."});
+                    res.status(400).send({message:"Curso ya creado."});
                 }else{
                     Course.findByIdAndUpdate(cId, course, (err, upCourse)=>{
                         if(err){
@@ -87,7 +88,7 @@ function updateCourse(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Ingrese correctamente los datos."});
+        res.status(400).send({message:"Ingrese correctamente los datos."});
     }
 }
 
@@ -113,7 +114,9 @@ function deleteCourse(req, res){
 }
 
 function getCourses(req, res){
-    Course.find((err, courses)=>{
+    var find = Course.find();
+
+    find.populate({path: 'lab'}).exec((err, courses)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -128,23 +131,26 @@ function getCourses(req, res){
 
 function getCourse(req, res){
     var cId = req.params.id;
+    var find = Course.findById(cId);
 
-    Course.findById(cId, (err, found)=>{
+    find.populate({path: 'lab'})
+    .populate({path: 'teacher'})
+    .exec((err, course)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
-            if(!found){
+            if(!course){
                 res.status(404).send({message:"Curso no encontrado."});
             }else{
-                res.status(200).send(found);
+                res.status(200).send(course);
             }
         }
     });
 }
 
 function getPractices(req, res){
-    var pracId = req.params.id;
-    var find = Practice.find({course: pracId}).sort('expDate');
+    var courseId = req.params.id;
+    var find = Practice.find({course: courseId}).sort('expDate');
 
     find.populate({path: 'material'}).exec((err, courses)=>{
         if(err){

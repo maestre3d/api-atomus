@@ -48,7 +48,7 @@ function newPractice(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Rellene todos los campos."});
     }
 }
 
@@ -124,7 +124,22 @@ function getPractice(req, res){
     var pracId = req.params.id;
     var find = Practice.findById(pracId);
 
-    find.populate({path: 'material'}).exec((err, practice)=>{
+    find.populate({path: 'material'})
+    .populate({
+        path:'course',
+        populate: {
+            path: 'teacher',
+            model: 'Teacher'
+        }
+    })
+    .populate({
+        path: 'course',
+        populate: {
+            path: 'lab',
+            model: 'Lab'
+        }
+    })
+    .exec((err, practice)=>{
         if(err){
             res.status(500).send({message:apiMsg});
        }else{
@@ -165,10 +180,38 @@ function getExp(req, res){
     });
 }
 
+function getNonExpCourse(req, res){
+    var courseId = req.params.id;
+    var find = Practice.find({ $and: [ {expDate: { $gt: moment().unix()}}, {course: courseId} ] });
+
+    find.populate({
+        path:'course',
+        populate: {
+            path: 'lab',
+            model: 'Lab'
+        }
+    })
+    .exec((err, practices)=>{
+        if(err){
+            res.status(500).send({message:apiMsg});
+        }else{
+            if(!practices){
+                res.status(404).send({message:"No se encontraron resultados."});
+            }else{
+                res.status(200).send(practices);
+            }
+        }
+    });
+}
+
 function addMaterial(req, res){
     var pracId = req.params.id;
     var practice = req.body;
 
+    if(req.user.grade){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
+
     if(practice.material){
         Practice.findByIdAndUpdate(pracId,
             ({'material': { '$ne': practice.material}},
@@ -186,38 +229,52 @@ function addMaterial(req, res){
             }
         );
     }else{
-        res.status(404).send({message:"Valor inválido."})
+        res.status(400).send({message:"Valor inválido."})
     }
 }
 
-function addMaterials(req, res){
+function removeMaterial(req, res){
     var pracId = req.params.id;
     var practice = req.body;
 
+    if(req.user.grade){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
+
     if(practice.material){
-        Practice.findByIdAndUpdate(pracId,
-            ({'material': { '$ne': practice.material}},
-            {'$addToSet': {'material': practice.material}}),
-            (err, saved)=>{
-                if(err){
-                    res.status(500).send({message:apiMsg});
+        Practice.findOne({$and: [{material: practice.material}, {_id: pracId}]}, (err, found)=>{
+            if(err){
+                res.status(500).send({message:apiMsg});
+            }else{
+                if(!found){
+                    res.status(404).send({message:"No se encontró material/práctica."});
                 }else{
-                    if(!saved){
-                        res.status(404).send({message:"Error al añadir material."})
-                    }else{
-                        res.status(200).send(saved);
-                    }
+                    Practice.findByIdAndUpdate(pracId, {$pull:{'material': practice.material}}, (err, upPrac)=>{
+                        if(err){
+                            res.status(500).send({message:apiMsg});
+                        }else{
+                            if(!upPrac){
+                                res.status(404).send({message:"Error al borrar material."});
+                            }else{
+                                res.status(200).send(upPrac);
+                            }
+                        }
+                    });
                 }
             }
-        );
+        });
     }else{
-        res.status(404).send({message:"Valor inválido."})
+        res.status(400).send({message:"Valor inválido."})
     }
 }
 
 function uploadFile(req, res){
     var pracId = req.params.id;
     var file_name = 'Sin subir.';
+
+    if(req.user.grade){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
 
     if(req.files){
         var path_file = './uploads/practices/';
@@ -265,7 +322,7 @@ function uploadFile(req, res){
             }
         });
     }else{
-        res.status(404).send({message:"Archivo no subido."});
+        res.status(400).send({message:"Archivo no subido."});
     }
 }
 
@@ -288,9 +345,10 @@ module.exports = {
     updatePractice,
     deletePractice,
     addMaterial,
-    addMaterials,
+    removeMaterial,
     getPractices,
     getPractice,
+    getNonExpCourse,
     getNonExp,
     getExp,
     uploadFile,

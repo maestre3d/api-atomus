@@ -8,7 +8,9 @@ var userRoutes = require('./routes/user.js');
 var teacherRoutes = require('./routes/teacher');
 var materialRoutes = require('./routes/material');
 var courseRoutes = require('./routes/course');
-var practiceRoutes = require('./routes/practice')
+var practiceRoutes = require('./routes/practice');
+var labRoutes = require('./routes/lab');
+var orderRoutes = require('./routes/order');
 
 var app = express();
 
@@ -34,5 +36,7 @@ app.use('/api', teacherRoutes);
 app.use('/api', materialRoutes);
 app.use('/api', courseRoutes);
 app.use('/api', practiceRoutes);
+app.use('/api', labRoutes);
+app.use('/api', orderRoutes);
 
 module.exports = app;
