@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class to manage practices.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 // Imports
 var moment = require('moment');
@@ -11,12 +18,15 @@ var Course = require('../models/course');
 // Misc
 const apiMsg = 'Server Error.'
 
+// Creates new practice
+// requires: course_id
 function newPractice(req, res){
+    var date = moment().unix();
     var practice = new Practice();
     var params = req.body;
 
     practice.name = params.name;
-    practice.postDate = moment().toISOString();
+    practice.postDate = moment.unix(date);
     practice.expDate = moment().add(params.expDate, 'days').unix();
     practice.file = null;
     practice.course = params.course;
@@ -48,10 +58,11 @@ function newPractice(req, res){
             }
         });
     }else{
-        res.status(400).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 }
 
+// Updates practice
 function updatePractice(req, res){
     var pracId = req.params.id;
     var practice = req.body;
@@ -68,22 +79,35 @@ function updatePractice(req, res){
             if(found){
                 res.status(404).send({message:"Práctica ya creada."});
             }else{
-                Practice.findByIdAndUpdate(pracId, practice, (err, upPrac)=>{
+                Practice.findById(pracId, (err, pra)=>{
                     if(err){
                         res.status(500).send({message:apiMsg});
                     }else{
-                        if(!upPrac){
-                            res.status(404).send({message:"Error al actualizar."});
+                        if(pra){
+                            practice.expDate = moment(pra.postDate).add(practice.expDate, 'days').unix();
+                            Practice.findByIdAndUpdate(pracId, practice, (err, upPrac)=>{
+                                if(err){
+                                    res.status(500).send({message:apiMsg});
+                                }else{
+                                    if(!upPrac){
+                                        res.status(404).send({message:"Error al actualizar."});
+                                    }else{
+                                        res.status(200).send(upPrac);
+                                    }
+                                }
+                            });
                         }else{
-                            res.status(200).send(upPrac);
+                            res.status(404).send({message:"Error al actualizar."});
                         }
                     }
+
                 });
             }
         }
     });
 }
 
+// Removes practice
 function deletePractice(req, res){
     var pracId = req.params.id;
 
@@ -104,6 +128,7 @@ function deletePractice(req, res){
     });
 }
 
+// Get all practices populating material's object
 function getPractices(req, res){
     var find = Practice.find();
 
@@ -120,6 +145,7 @@ function getPractices(req, res){
     });
 }
 
+// Get practice populating material, course-> teacher, course-> lab objects
 function getPractice(req, res){
     var pracId = req.params.id;
     var find = Practice.findById(pracId);
@@ -152,6 +178,7 @@ function getPractice(req, res){
     });
 }
 
+// Get all non expired practices
 function getNonExp(req, res){
     Practice.find({expDate: {$gt: moment().unix()}},(err, practices)=>{
         if(err){
@@ -166,6 +193,7 @@ function getNonExp(req, res){
     });
 }
 
+// Get all expired practices
 function getExp(req, res){
     Practice.find({expDate: {$lte: moment().unix()}}, (err, practices)=>{
         if(err){
@@ -180,6 +208,8 @@ function getExp(req, res){
     });
 }
 
+// Get all non expired practices by course
+// requires: course_id
 function getNonExpCourse(req, res){
     var courseId = req.params.id;
     var find = Practice.find({ $and: [ {expDate: { $gt: moment().unix()}}, {course: courseId} ] });
@@ -204,6 +234,7 @@ function getNonExpCourse(req, res){
     });
 }
 
+// Add material to practice's list
 function addMaterial(req, res){
     var pracId = req.params.id;
     var practice = req.body;
@@ -213,6 +244,21 @@ function addMaterial(req, res){
     }
 
     if(practice.material){
+        Practice.findByIdAndUpdate(pracId,
+            {$push: { material: {$each: practice.material}}},
+            (err, saved)=>{
+                if(err){
+                    res.status(500).send({message:apiMsg});
+                }else{
+                    if(!saved){
+                        res.status(404).send({message:"Error al añadir material."})
+                    }else{
+                        res.status(200).send(saved);
+                    }
+                }
+            }
+        );
+        /* NO REPEATED MATERIALS
         Practice.findByIdAndUpdate(pracId,
             ({'material': { '$ne': practice.material}},
             {'$addToSet': {'material': practice.material}}),
@@ -227,12 +273,13 @@ function addMaterial(req, res){
                     }
                 }
             }
-        );
+        );*/
     }else{
         res.status(400).send({message:"Valor inválido."})
     }
 }
 
+// Removes material from practice's list
 function removeMaterial(req, res){
     var pracId = req.params.id;
     var practice = req.body;
@@ -268,6 +315,8 @@ function removeMaterial(req, res){
     }
 }
 
+// FS: Upload practice's file
+// note: (It could be a doc/docx, pdf or a pic file).
 function uploadFile(req, res){
     var pracId = req.params.id;
     var file_name = 'Sin subir.';
@@ -326,6 +375,7 @@ function uploadFile(req, res){
     }
 }
 
+// Get practice file
 function getFile(req, res){
     var docFile = req.params.docFile;
 

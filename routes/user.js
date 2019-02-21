@@ -1,7 +1,14 @@
-'use strict'
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/17/2019
+    *   DESC: Class for user's routes.
+    *   LICENSE: CLOSED - SOURCE
+*/
 
+'use strict'
 var express = require('express');
 var api = express.Router();
+
 var mdAuth = require('../middlewares/authenticated');
 var controller = require('../controllers/user');
 // Imports upload
@@ -19,9 +26,16 @@ api.post('/user/upload/:id', [mdAuth.ensureAuth, md_upload], controller.uploadIm
 api.get('/user/pic/:imageFile', controller.getImageFile);
 
 // Misc
+/*
+    *   1.      Attach course to user.
+    *   2.      Detach course from user.
+*/
 api.get('/user', mdAuth.ensureAuth, controller.getUsers);
 api.get('/user/:id', mdAuth.ensureAuth, controller.getUser);
-api.post('/user/add/course/:id', mdAuth.ensureAuth, controller.addCourse);
-api.post('/user/del/course/:id', mdAuth.ensureAuth, controller.removeCourse);
+
+// ID: user_id
+// requires: course_id
+api.post('/user/course/:id', mdAuth.ensureAuth, controller.addCourse);
+api.delete('/user/course/:id', mdAuth.ensureAuth, controller.removeCourse);
 
 module.exports = api;

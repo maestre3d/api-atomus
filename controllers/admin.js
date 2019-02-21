@@ -1,7 +1,7 @@
 /*
     *   AUTHOR: ALONSO R
-    *   DATE: 2/17/2019
-    *   DESC: Class to manage teachers.
+    *   DATE: 2/20/2019
+    *   DESC: Class to manage admins.
     *   LICENSE: CLOSED - SOURCE
 */
 
@@ -13,22 +13,23 @@ var fs = require('fs');
 var path = require('path');
 
 // Model(s)
-var Teacher = require('../models/teacher');
+var Admin = require('../models/admin');
 
 // Misc
 // Secret: Auth method to avoid intruders
 const apiMsg = 'Server Error.';
-const secret = 'teacher_pass';
+const secret = 'secret_pass';
 const saltRounds = 10;
 
-// Creates new teacher
-function newTeacher(req, res){
-    var user = new Teacher();
+// Creates new admin
+function newAdmin(req, res){
+    var user = new Admin();
     var params = req.body;
 
     user.username = params.username;
     user.name = params.name;
     user.surname = params.surname;
+    user.role = 'ROLE_ADMIN';
     user.image = null;
 
     if(params.verify === secret){
@@ -39,7 +40,7 @@ function newTeacher(req, res){
                 }else{
                     user.password = hash;
                     if(user.name && user.surname){
-                        Teacher.findOne({username:user.username}, (err, found)=>{
+                        Admin.findOne({username:user.username}, (err, found)=>{
                             if(err){
                                 res.status(500).send({message:apiMsg});
                             }else{
@@ -61,7 +62,7 @@ function newTeacher(req, res){
                             }
                         });
                     }else{
-                        res.status(400).send({message:"Inserte todos los campos."});
+                        res.status(404).send({message:"Inserte todos los campos."});
                     }
                 }
             });
@@ -73,8 +74,8 @@ function newTeacher(req, res){
     }
 }
 
-// Teacher's login
-function logTeacher(req, res){
+// Admin's login
+function logAdmin(req, res){
     var params = req.body;
     var hash;
 
@@ -82,7 +83,7 @@ function logTeacher(req, res){
     var password = params.password;
 
     if(params.username && params.password){
-        Teacher.findOne({username:username}, (err, user)=>{
+        Admin.findOne({username:username}, (err, user)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
@@ -109,8 +110,8 @@ function logTeacher(req, res){
     }
 }
 
-// Updates teacher
-function updateTeacher(req, res){
+// Updates admin
+function updateAdmin(req, res){
     var userId = req.params.id;
     var user = req.body;
 
@@ -118,11 +119,7 @@ function updateTeacher(req, res){
         return res.status(401).send({message:"Acceso denegado."});
     }
 
-    if(user.username && !req.user.role){
-        return res.status(403).send({message:"Acción inválida."});
-    }
-
-    Teacher.findOne({username:user.username}, (err, found)=>{
+    Admin.findOne({username:user.username}, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -133,7 +130,7 @@ function updateTeacher(req, res){
                             res.status(500).send({message:apiMsg});
                         }else{
                             user.password = hash;
-                            Teacher.findByIdAndUpdate(userId, user, (err, updated)=>{
+                            Admin.findByIdAndUpdate(userId, user, (err, updated)=>{
                                 if(err){
                                     res.status(500).send({message:apiMsg});
                                 }else{
@@ -147,7 +144,7 @@ function updateTeacher(req, res){
                         }
                     });
                 }else{
-                    Teacher.findByIdAndUpdate(userId, user, (err, updated)=>{
+                    Admin.findByIdAndUpdate(userId, user, (err, updated)=>{
                         if(err){
                             res.status(500).send({message:apiMsg});
                         }else{
@@ -166,15 +163,15 @@ function updateTeacher(req, res){
     });
 }
 
-// Removes teacher
-function deleteTeacher(req, res){
+// Removes admin
+function deleteAdmin(req, res){
     var userId = req.params.id;
 
     if(!req.user.role){
         return res.status(403).send({message:"Acceso denegado."});
     }
 
-    Teacher.findByIdAndRemove(userId, (err, deleted)=>{
+    Admin.findByIdAndRemove(userId, (err, deleted)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -187,9 +184,13 @@ function deleteTeacher(req, res){
     });
 }
 
-// Get all teachers
-function getTeachers(req, res){
-    Teacher.find((err, users)=>{
+// Get all admins
+function getAdmins(req, res){
+    if(!req.user.role){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
+
+    Admin.find((err, users)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -202,11 +203,15 @@ function getTeachers(req, res){
     });
 }
 
-// Get teacher
-function getTeacher(req, res){
+// Get Admin
+function getAdmin(req, res){
     var userId = req.params.id;
 
-    Teacher.findById(userId, (err, found)=>{
+    if(!req.user.role){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
+
+    Admin.findById(userId, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
@@ -225,7 +230,7 @@ function uploadImage(req, res){
     var file_name = 'Sin subir.';
 
     if(req.files){
-        var path_file = './uploads/teachers/';
+        var path_file = './uploads/admins/';
         var file_path = req.files.image.path;
         var file_split = file_path.split('\\');
         var file_name = file_split[2];
@@ -233,7 +238,7 @@ function uploadImage(req, res){
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
 
-        Teacher.findById(userId, (err, found)=>{
+        Admin.findById(userId, (err, found)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
@@ -242,7 +247,7 @@ function uploadImage(req, res){
                 }else{
                     path_file = path_file + found.image;
                     if( file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' ){
-                        Teacher.findByIdAndUpdate(userId, {image:file_name},(err, updated)=>{
+                        Admin.findByIdAndUpdate(userId, {image:file_name},(err, updated)=>{
                             if(err){
                                 res.status(500).send({message:apiMsg});
                             }else{
@@ -278,7 +283,7 @@ function uploadImage(req, res){
 function getImageFile(req, res){
     var imageFile = req.params.imageFile;
 
-    var path_file = './uploads/teachers/' + imageFile;
+    var path_file = './uploads/admins/' + imageFile;
 
     fs.exists(path_file, function(exists){
         if(exists){
@@ -290,12 +295,12 @@ function getImageFile(req, res){
 }
 
 module.exports = {
-    newTeacher,
-    logTeacher,
-    updateTeacher,
-    deleteTeacher,
-    getTeachers,
-    getTeacher,
+    newAdmin,
+    logAdmin,
+    updateAdmin,
+    deleteAdmin,
+    getAdmins,
+    getAdmin,
     uploadImage,
     getImageFile
 };

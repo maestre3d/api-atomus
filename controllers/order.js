@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/19/2019
+    *   DESC: Class to manage orders.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 // Imports
 var moment = require('moment');
@@ -7,8 +14,10 @@ var Order = require('../models/order');
 var Practice = require('../models/practice');
 var User = require('../models/user');
 
+// Misc
 const apiMsg = 'Server Error.';
 
+// Test function for UNIX's Time Stamp & momentjs 
 function testExp(req, res){
     var date = moment().unix();
     //var tmp = moment.unix(date).format('dddd, MMMM Do, YYYY h:mm:ss A');
@@ -18,6 +27,9 @@ function testExp(req, res){
     res.status(200).send({time: moment(exp).add((10), 'days').toLocaleString()});
 };
 
+// Creates new order
+// requires: user_id, practice_id
+// note: (It fills automatically order's mat list with practice's mat list).
 function createOrder(req, res){
     var order = new Order();
     var params = req.body;
@@ -69,6 +81,7 @@ function createOrder(req, res){
     }
 }
 
+// Removes order
 function removeOrder(req, res){
     var orderId = req.params.id;
 
@@ -85,6 +98,7 @@ function removeOrder(req, res){
     })
 }
 
+// Get all orders populating user, materials and practice objects
 function getOrders(req, res){
     var find = Order.find();
 
@@ -104,6 +118,7 @@ function getOrders(req, res){
     });
 }
 
+// Get order populating user, materials and practice objects
 function getOrder(req, res){
     var orderId = req.params.id;
     var find = Order.findById(orderId);
@@ -124,6 +139,8 @@ function getOrder(req, res){
     });
 }
 
+// Get all user's active orders populating practice's object
+// requires: user_id
 function getUserOr(req, res){
     var user = req.params.id;
 
@@ -143,7 +160,28 @@ function getUserOr(req, res){
     }else{
         res.status(400).send({message:"Campos insuficientes."});
     }
+}
 
+// Get all user's expired orders
+// requires: user_id
+function getUserExp(req, res){
+    var user = req.params.id;
+
+    if(user){
+        Order.find({$and: [{user: user}, {$lte: moment().unix()}]}, (err, orders)=>{
+            if(err){
+                res.status(500).send({message:apiMsg});
+            }else{
+                if(!orders){
+                    res.status(404).send({message:"No se encontraron órdenes."});
+                }else{
+                    res.status(200).send(orders);
+                }
+            }
+        });
+    }else{
+        res.status(400).send({message:"Campos insuficientes."});
+    }
 }
 
 module.exports = {
@@ -152,5 +190,6 @@ module.exports = {
     removeOrder,
     getOrders,
     getOrder,
-    getUserOr
+    getUserOr,
+    getUserExp
 };

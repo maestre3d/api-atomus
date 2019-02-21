@@ -1,12 +1,22 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class to manage courses
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
+
 // Model(s)
 var Course = require('../models/course');
 var Teacher = require('../models/teacher');
 var Practice = require('../models/practice');
 
 // Misc
-var apiMsg = 'Server Error.';
+const apiMsg = 'Server Error.';
 
+// Create a new course
+// requires: teacher_id
 function newCourse(req, res){
     var params = req.body;
     var course = new Course();
@@ -53,10 +63,11 @@ function newCourse(req, res){
             }
         });
     }else{
-        res.status(400).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 }
 
+// Updates course
 function updateCourse(req, res){
     var cId = req.params.id;
     var course = req.body;
@@ -92,6 +103,7 @@ function updateCourse(req, res){
     }
 }
 
+// Deletes course
 function deleteCourse(req, res){
     var cId = req.params.id;
 
@@ -113,6 +125,7 @@ function deleteCourse(req, res){
 
 }
 
+// Get all courses, populating labs objects
 function getCourses(req, res){
     var find = Course.find();
 
@@ -129,6 +142,7 @@ function getCourses(req, res){
     });
 }
 
+// Get course populating lab and teacher objects
 function getCourse(req, res){
     var cId = req.params.id;
     var find = Course.findById(cId);
@@ -148,6 +162,8 @@ function getCourse(req, res){
     });
 }
 
+// Get all practices from course_id
+// requires: course_id;
 function getPractices(req, res){
     var courseId = req.params.id;
     var find = Practice.find({course: courseId}).sort('expDate');

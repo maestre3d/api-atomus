@@ -1,7 +1,15 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/17/2019
+    *   DESC: Middleware Class for JWT Auth validation.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 
 var jwt = require('jwt-simple');
 var moment = require('moment');
+
 var secret = 'secret_pass';
 
 exports.ensureAuth = function(req, res ,next) {

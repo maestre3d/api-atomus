@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class to manage users/students.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 // Imports
 var bcrypt = require('bcrypt');
@@ -7,11 +14,13 @@ var path = require('path');
 
 // Model(s)
 var User = require('../models/user');
+var Ban = require('../models/ban');
 
 // Misc
 const apiMsg = 'Server Error.';
 const saltRounds = 10;
 
+// Creates new user/student
 function newUser(req, res){
     var user = new User();
     var params = req.body;
@@ -51,15 +60,16 @@ function newUser(req, res){
                         }
                     });
                 }else{
-                    res.status(404).send({message:"Rellene todos los campos."});
+                    res.status(400).send({message:"Inserte todos los campos."});
                 }
             }
         });
     }else{
-        res.status(400).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 }
 
+// Student's login
 function logUser(req, res){
     var params = req.body;
     var hash;
@@ -76,11 +86,22 @@ function logUser(req, res){
                     hash = user.password;
                     bcrypt.compare(password, hash, function(err, logged){
                         if(logged === true){
-                            if(params.gethash){
-                                res.status(200).send({token:jwt.createToken(user)});
-                            }else{
-                                res.status(200).send(user);
-                            }
+                            // Logs correctly
+                            Ban.findOne({user: user._id}, (err, banUser)=>{
+                                if(err){
+                                    res.status(500).send({message:apiMsg});
+                                }else{
+                                    if(banUser){
+                                        res.status(403).send({message:"Usuario vetado.\nContacte a administración académica."});
+                                    }else{
+                                        if(params.gethash){
+                                            res.status(200).send({token:jwt.createToken(user)});
+                                        }else{
+                                            res.status(200).send(user);
+                                        }
+                                    }
+                                }
+                            });
                         }else{
                             res.status(404).send({message:"Usuario y/o contraseña incorrectos."});
                         }
@@ -91,10 +112,11 @@ function logUser(req, res){
             }
         });
     }else{
-        res.status(400).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 }
 
+// Updates student
 function updateUser(req, res){
     var userId = req.params.id;
     var user = req.body;
@@ -103,23 +125,47 @@ function updateUser(req, res){
         return res.status(401).send({message:"Acceso denegado."});
     }
 
+    if(user.username && !req.user.role){
+        return res.status(403).send({message:"Acción inválida."});
+    }
 
     User.findOne({username:user.username}, (err, found)=>{
         if(err){
             res.status(500).send({message:apiMsg});
         }else{
             if(!found){
-                User.findByIdAndUpdate(userId, user, (err, updated)=>{
-                    if(err){
-                        res.status(500).send({message:apiMsg});
-                    }else{
-                        if(!updated){
-                            res.status(404).send({message:"Error al actualizar usuario."});
+                if(user.password){
+                    bcrypt.hash(user.password, saltRounds, function(err, hash){
+                        if(err){
+                            res.status(500).send({message:apiMsg});
                         }else{
-                            res.status(200).send(updated);
+                            user.password = hash;
+                            User.findByIdAndUpdate(userId, user, (err, updated)=>{
+                                if(err){
+                                    res.status(500).send({message:apiMsg});
+                                }else{
+                                    if(!updated){
+                                        res.status(404).send({message:"Error al actualizar usuario."});
+                                    }else{
+                                        res.status(200).send(updated);
+                                    }
+                                }
+                            });
                         }
-                    }
-                });
+                    });
+                }else{
+                    User.findByIdAndUpdate(userId, user, (err, updated)=>{
+                        if(err){
+                            res.status(500).send({message:apiMsg});
+                        }else{
+                            if(!updated){
+                                res.status(404).send({message:"Error al actualizar usuario."});
+                            }else{
+                                res.status(200).send(updated);
+                            }
+                        }
+                    });
+                }
             }else{
                 res.status(400).send({message:"Usuario ya creado."});
             }
@@ -127,8 +173,13 @@ function updateUser(req, res){
     });
 }
 
+// Deletes student
 function deleteUser(req, res){
     var userId = req.params.id;
+
+    if(!req.user.role){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
 
     User.findByIdAndRemove(userId, (err, deleted)=>{
         if(err){
@@ -143,6 +194,7 @@ function deleteUser(req, res){
     });
 }
 
+// Get all students
 function getUsers(req, res){
     User.find((err, users)=>{
         if(err){
@@ -157,6 +209,7 @@ function getUsers(req, res){
     });
 }
 
+// Get student populating student's courses
 function getUser(req, res){
     var userId = req.params.id;
     var find = User.findById(userId);
@@ -174,6 +227,7 @@ function getUser(req, res){
     });
 }
 
+// Attach new course to student
 function addCourse(req, res){
     var userId = req.params.id;
     var user = req.body;
@@ -208,6 +262,7 @@ function addCourse(req, res){
     }
 }
 
+// Detach course from student
 function removeCourse(req, res){
     var userId = req.params.id;
     var user = req.body;
@@ -239,7 +294,7 @@ function removeCourse(req, res){
     }
 }
 
-
+// FS: Uploads user's pic
 function uploadImage(req, res){
     var userId = req.params.id;
     var file_name = 'Sin subir.';
@@ -295,6 +350,7 @@ function uploadImage(req, res){
     }
 }
 
+// Get user's pic
 function getImageFile(req, res){
     var imageFile = req.params.imageFile;
 

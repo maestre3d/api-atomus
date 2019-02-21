@@ -1,7 +1,14 @@
-'use strict'
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class for material's routes.
+    *   LICENSE: CLOSED - SOURCE
+*/
 
+'use strict'
 var express = require('express');
 var api = express.Router();
+
 var controller = require('../controllers/material');
 var mdAuth = require('../middlewares/authenticated');
 // Imports upload

@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class to manage materials.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 // Imports
 var fs = require('fs');
@@ -9,6 +16,7 @@ var Material = require('../models/material');
 // Misc
 var apiMsg = 'Server Error.';
 
+// Creates new material
 function newMaterial(req, res){
     var material = new Material();
     var params = req.body;
@@ -57,10 +65,11 @@ function newMaterial(req, res){
         });
 
     }else{
-        res.status(400).send({message:"Rellene todos los campos."});
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 }
 
+// Updates material
 function updateMaterial(req, res){
     var matId = req.params.id;
     var material = req.body;
@@ -92,6 +101,7 @@ function updateMaterial(req, res){
     });
 }
 
+// Deletes material
 function deleteMaterial(req, res){
     var matId = req.params.id;
 
@@ -112,6 +122,7 @@ function deleteMaterial(req, res){
     });
 }
 
+// Get all materials
 function getMaterials(req, res){
     Material.find((err, materials)=>{
         if(err){
@@ -126,6 +137,7 @@ function getMaterials(req, res){
     });
 }
 
+// Get material
 function getMaterial(req, res){
     var matId = req.params.id;
 
@@ -142,6 +154,7 @@ function getMaterial(req, res){
     });
 }
 
+// FS: Upload material image
 function uploadImage(req, res){
     var matId = req.params.id;
     var file_name = 'Sin subir.';
@@ -200,6 +213,7 @@ function uploadImage(req, res){
     }
 }
 
+// Get material pic
 function getImageFile(req, res){
     var imageFile = req.params.imageFile;
 

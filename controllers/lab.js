@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/18/2019
+    *   DESC: Class to manage labs
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 
 // Model(s)
@@ -7,6 +14,8 @@ var Course = require('../models/course');
 // Misc
 const apiMsg = 'Server Error.';
 
+
+// Creates lab
 function createLab(req, res){
     var lab = new Lab();
     var params = req.body;
@@ -44,11 +53,12 @@ function createLab(req, res){
             }
         });
     }else{
-        res.status(400).send({message:"Rellene todos los campos."})
+        res.status(400).send({message:"Inserte todos los campos."});
     }
 
 }
 
+// Updates lab
 function updateLab(req, res){
     var labId = req.params.id;
     var lab = req.body;
@@ -81,6 +91,7 @@ function updateLab(req, res){
 
 }
 
+// Deletes lab
 function deleteLab(req, res){
     var labId = req.params.id;
 
@@ -101,6 +112,8 @@ function deleteLab(req, res){
     });
 }
 
+// Attach a course to lab
+// requires: course_id
 function addCourse(req, res){
     var courseId = req.params.id;
     var course = req.body;
@@ -109,15 +122,36 @@ function addCourse(req, res){
         return res.status(403).send({message:"Acceso denegado."});
     }
 
-    if(course){
-        Course.findByIdAndUpdate(courseId, {lab: course.lab}, (err, upCour)=>{
+    if(course.lab){
+        
+        Lab.findById(course.lab, (err, lab)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
-                if(!upCour){
-                    res.status(404).send({message:"Error al añadir laboratorio."});
+                if(!lab){
+                    res.status(404).send({message:"Laboratorio inexistente."});
                 }else{
-                    res.status(200).send(upCour);
+                    Course.findOne({lab: course.lab}, (err, duCor)=>{
+                        if(err){
+                            res.status(500).send({message:apiMsg});
+                        }else{
+                            if(duCor){
+                                res.status(400).send({message:"Laboratorio ya contiene curso."});
+                            }else{
+                                Course.findByIdAndUpdate(courseId, {lab: course.lab}, (err, upCour)=>{
+                                    if(err){
+                                        res.status(500).send({message:apiMsg});
+                                    }else{
+                                        if(!upCour){
+                                            res.status(404).send({message:"Error al añadir laboratorio."});
+                                        }else{
+                                            res.status(200).send(upCour);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -127,6 +161,8 @@ function addCourse(req, res){
 
 }
 
+// Detach lab from course
+// requires: course_id
 function deleteCourse(req, res){
     var courseId = req.params.id;
     var course = req.body;
@@ -162,6 +198,7 @@ function deleteCourse(req, res){
     }
 }
 
+// Get all labs populating course->teacher objects
 function getLabs(req, res){
     var find = Lab.find();
 
@@ -185,6 +222,7 @@ function getLabs(req, res){
     });
 }
 
+// Get lab
 function getLab(req, res){
     var labId = req.params.id;
 

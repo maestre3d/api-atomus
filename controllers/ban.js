@@ -1,3 +1,10 @@
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/20/2019
+    *   DESC: Class to forbid students of log.
+    *   LICENSE: CLOSED - SOURCE
+*/
+
 'use strict'
 // Imports
 var moment = require('moment');
@@ -9,11 +16,13 @@ var Order = require('../models/order');
 // Misc
 const apiMsg = 'Server Error.';
 
+// Creates ban
+// requires: user_id, order_id
 function createBan(req, res){
     var ban = new Ban();
     var params = req.body;
 
-    if(req.user.grade){
+    if(!req.user.role){
         return res.status(403).send({message:"Acceso denegado."});
     }
 
@@ -24,18 +33,18 @@ function createBan(req, res){
     }
 
     ban.type = params.type;
-    ban.postDate = moment().toISOString();
-    ban.user = params.user;
+    ban.postDate = moment().unix();
     ban.order = params.order;
 
-    if(ban.type && ban.user && ban.order){
-        Order.findOne({$and: [{_id: ban.order}, {user: ban.user}]}, (err, order)=>{
+    if(ban.type && ban.order){
+        Order.findById(ban.order, (err, order)=>{
             if(err){
                 res.status(500).send({message:apiMsg});
             }else{
                 if(!order){
                     res.status(400).send({message:"Orden/Usuario inválidos."});
                 }else{
+                    ban.user = order.user._id;
                     Ban.findOne({user: ban.user}, (err, user)=>{
                         if(err){
                             res.status(500).send({message:apiMsg});
@@ -66,11 +75,12 @@ function createBan(req, res){
 
 }
 
+// Updates ban
 function updateBan(req, res){
     var banId = req.params.id;
     var ban = req.body;
 
-    if(req.user.grade){
+    if(!req.user.role){
         return res.status(403).send({message:"Acceso denegado."});
     }
 
@@ -91,10 +101,11 @@ function updateBan(req, res){
     }
 }
 
+// Removes ban
 function removeBan(req, res){
     var banId = req.params.id;
 
-    if(req.user.grade){
+    if(!req.user.role){
         return res.status(403).send({message:"Acceso denegado."});
     }
 
@@ -111,6 +122,7 @@ function removeBan(req, res){
     })
 }
 
+// Get all bans
 function getBans(req, res){
 
     if(req.user.grade){
@@ -130,8 +142,13 @@ function getBans(req, res){
     });
 }
 
+// Get baned
 function getBan(req, res){
     var banId = req.params.id;
+
+    if(req.user.grade){
+        return res.status(403).send({message:"Acceso denegado."});
+    }
 
     Ban.findById(banId, (err, ban)=>{
         if(err){

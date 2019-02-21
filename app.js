@@ -1,5 +1,11 @@
-'use strict'
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/17/2019
+    *   DESC: App Class for API's management.
+    *   LICENSE: CLOSED - SOURCE
+*/
 
+'use strict'
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -11,6 +17,8 @@ var courseRoutes = require('./routes/course');
 var practiceRoutes = require('./routes/practice');
 var labRoutes = require('./routes/lab');
 var orderRoutes = require('./routes/order');
+var banRoutes = require('./routes/ban');
+var adminRoutes = require('./routes/admin');
 
 var app = express();
 
@@ -38,5 +46,7 @@ app.use('/api', courseRoutes);
 app.use('/api', practiceRoutes);
 app.use('/api', labRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', banRoutes);
+app.use('/api', adminRoutes);
 
 module.exports = app;

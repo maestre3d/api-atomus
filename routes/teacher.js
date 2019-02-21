@@ -1,7 +1,14 @@
-'use strict'
+/*
+    *   AUTHOR: ALONSO R
+    *   DATE: 2/17/2019
+    *   DESC: Class for teacher's routes.
+    *   LICENSE: CLOSED - SOURCE
+*/
 
+'use strict'
 var express = require('express');
 var api = express.Router();
+
 var mdAuth = require('../middlewares/authenticated');
 var controller = require('../controllers/teacher');
 // Imports upload
