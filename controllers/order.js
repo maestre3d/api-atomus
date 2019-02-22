@@ -13,6 +13,8 @@ var moment = require('moment');
 var Order = require('../models/order');
 var Practice = require('../models/practice');
 var User = require('../models/user');
+var Material = require('../models/material');
+var Ban  = require('../models/ban');
 
 // Misc
 const apiMsg = 'Server Error.';
@@ -26,6 +28,24 @@ function testExp(req, res){
     console.log(moment().unix());
     res.status(200).send({time: moment(exp).add((10), 'days').toLocaleString()});
 };
+
+function testUpdate(req, res){
+    var orderId = req.params.id;
+    Order.findById(orderId).then(function(order) {
+        var matQ = [];
+      
+        order.forEach(function(u) {
+          matQ.push(Material.find({material:u.material}));
+        });
+      
+        return Promise.all(matQ );
+      }).then(function(list) {
+          res.status(200).send(list);
+      }).catch(function(error) {
+          res.status(500).send('one of the queries failed', error);
+      }
+    ); 
+}
 
 // Creates new order
 // requires: user_id, practice_id
@@ -92,7 +112,19 @@ function removeOrder(req, res){
             if(!dOrder){
                 res.status(404).send({message:"Error al borrar."});
             }else{
-                res.status(200).send(dOrder);
+                // DELETE ON CASCADE
+                // Order=>Ban
+                Ban.find({order: dOrder._id}).deleteOne((err, banRemoved)=>{
+                    if(err){
+                        res.status(500).send({message:apiMsg});
+                    }else{
+                        if(!banRemoved){
+                            res.status(404).send({message:"Error al borrar."});
+                        }else{
+                            res.status(200).send(dOrder);
+                        }
+                    }
+                });
             }
         }
     })
@@ -186,6 +218,7 @@ function getUserExp(req, res){
 
 module.exports = {
     testExp,
+    testUpdate,
     createOrder,
     removeOrder,
     getOrders,

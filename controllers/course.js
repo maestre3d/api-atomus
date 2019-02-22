@@ -11,6 +11,8 @@
 var Course = require('../models/course');
 var Teacher = require('../models/teacher');
 var Practice = require('../models/practice');
+var Order = require('../models/order');
+var Ban = require('../models/ban');
 
 // Misc
 const apiMsg = 'Server Error.';
@@ -118,7 +120,40 @@ function deleteCourse(req, res){
             if(!delCou){
                 res.status(404).send({message:"Error al eliminar."});
             }else{
-                res.status(200).send(delCou);
+                // DELETE ON CASCADE
+                // Course=>Practice=>Order=>Ban
+
+                Practice.find({course: delCou._id}).deleteOne((err, pracRm)=>{
+                    if(err){
+                        res.status(500).send({message:apiMsg});
+                    }else{
+                        if(!pracRm){
+                            res.status(404).send({message:"Error al eliminar."});
+                        }else{
+                            Order.find({practice: pracRm._id}).deleteOne((err, orderRm)=>{
+                                if(err){
+                                    res.status(500).send({message:apiMsg});
+                                }else{
+                                    if(!orderRm){
+                                        res.status(404).send({message:"Error al eliminar."});
+                                    }else{
+                                        Ban.find({order: orderRm._id}).deleteOne((err, banRm)=>{
+                                            if(err){
+                                                res.status(500).send({message:apiMsg});
+                                            }else{
+                                                if(!banRm){
+                                                    res.status(404).send({message:"Error al eliminar."});
+                                                }else{
+                                                    res.status(200).send(delCou);
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
             }
         }
     });

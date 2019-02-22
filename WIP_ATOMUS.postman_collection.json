@@ -1,0 +1,2585 @@
+{
+	"info": {
+		"_postman_id": "eb889d43-39b8-431e-86f6-1935cf9a01d8",
+		"name": "WIP_ATOMUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1117250020",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Luis Alonso",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Ruiz Esparza",
+									"type": "text"
+								},
+								{
+									"key": "grade",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOGYyZTYxN2RlNDMyMzQ2MWZmYTMiLCJ1c2VybmFtZSI6IjExMTcyNTAwMjAiLCJwYXNzd29yZCI6IiQyYiQxMCRHcmVlVlF1dEt4MDI1dVFrZUg2RW1lNHJoaXhpejZ3bzYvejRJOWFuYnl3YkVwQkt1dkU0RyIsIm5hbWUiOiJMdWlzIEFsb25zbyIsInN1cm5hbWUiOiJSdWl6IEVzcGFyemEiLCJncmFkZSI6MSwiaW1hZ2UiOm51bGwsImlhdCI6MTU1MDY4NDE2OSwiZXhwIjoxNTUwNzcwNTY5fQ.H-P_lHPRbJ7yrfxAm3_z7kXPHNNAtRHDUvnFpZoOt8c",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grade",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user/5c6d8f2e617de4323461ffa3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user",
+								"5c6d8f2e617de4323461ffa3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOGYyZTYxN2RlNDMyMzQ2MWZmYTMiLCJ1c2VybmFtZSI6IjExMTcyNTAwMjAiLCJwYXNzd29yZCI6IiQyYiQxMCRHcmVlVlF1dEt4MDI1dVFrZUg2RW1lNHJoaXhpejZ3bzYvejRJOWFuYnl3YkVwQkt1dkU0RyIsIm5hbWUiOiJMdWlzIEFsb25zbyIsInN1cm5hbWUiOiJSdWl6IEVzcGFyemEiLCJncmFkZSI6MSwiaW1hZ2UiOm51bGwsImlhdCI6MTU1MDY4NDE2OSwiZXhwIjoxNTUwNzcwNTY5fQ.H-P_lHPRbJ7yrfxAm3_z7kXPHNNAtRHDUvnFpZoOt8c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user/5c6d91b89442c10578aa2a87",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user",
+								"5c6d91b89442c10578aa2a87"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1117250020",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "gethash",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1117250020",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "gethash",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOGYyZTYxN2RlNDMyMzQ2MWZmYTMiLCJ1c2VybmFtZSI6IjExMTcyNTAwMjAiLCJwYXNzd29yZCI6IiQyYiQxMCRHcmVlVlF1dEt4MDI1dVFrZUg2RW1lNHJoaXhpejZ3bzYvejRJOWFuYnl3YkVwQkt1dkU0RyIsIm5hbWUiOiJMdWlzIEFsb25zbyIsInN1cm5hbWUiOiJSdWl6IEVzcGFyemEiLCJncmFkZSI6MSwiaW1hZ2UiOm51bGwsImlhdCI6MTU1MDY4NDE2OSwiZXhwIjoxNTUwNzcwNTY5fQ.H-P_lHPRbJ7yrfxAm3_z7kXPHNNAtRHDUvnFpZoOt8c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user/5c6d91b89442c10578aa2a87",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user",
+								"5c6d91b89442c10578aa2a87"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOGYyZTYxN2RlNDMyMzQ2MWZmYTMiLCJ1c2VybmFtZSI6IjExMTcyNTAwMjAiLCJwYXNzd29yZCI6IiQyYiQxMCRHcmVlVlF1dEt4MDI1dVFrZUg2RW1lNHJoaXhpejZ3bzYvejRJOWFuYnl3YkVwQkt1dkU0RyIsIm5hbWUiOiJMdWlzIEFsb25zbyIsInN1cm5hbWUiOiJSdWl6IEVzcGFyemEiLCJncmFkZSI6MSwiaW1hZ2UiOm51bGwsImlhdCI6MTU1MDY4NDE2OSwiZXhwIjoxNTUwNzcwNTY5fQ.H-P_lHPRbJ7yrfxAm3_z7kXPHNNAtRHDUvnFpZoOt8c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relacionar con curso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "course",
+									"value": "5c6d9ed8cf79892c644d21f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user/course/5c6d91b89442c10578aa2a87",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user",
+								"course",
+								"5c6d91b89442c10578aa2a87"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar de curso",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "course",
+									"value": "5c6d9ed8cf79892c644d21f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/user/course/5c6d91b89442c10578aa2a87",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"user",
+								"course",
+								"5c6d91b89442c10578aa2a87"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "808080",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Rodolfo Mateo",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Messi Cuccitinni",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "verify",
+									"value": "teacher_pass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOTVjZTNmZDczNTJlMzg0ZWU0NzgiLCJ1c2VybmFtZSI6IjgwODA4MCIsInBhc3N3b3JkIjoiJDJiJDEwJHpFLlVJOElrdEpWVWdkTFFKV2txaGUwVEJMZ2RBUlkuc2xyUVBWZW1RdjBZRHUzblFBTWFLIiwibmFtZSI6IlJvZG9sZm8gTWF0ZW8iLCJzdXJuYW1lIjoiTWVzc2kgQ3VjY2l0aW5uaSIsImltYWdlIjpudWxsLCJpYXQiOjE1NTA2ODU3MzEsImV4cCI6MTU1MTU0OTczMX0.jRJAuNSizMsT_1LDlTgx3O3r4LV8JaK0WqLg3_hWZB8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher/5c6d95ce3fd7352e384ee478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher",
+								"5c6d95ce3fd7352e384ee478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOTVjZTNmZDczNTJlMzg0ZWU0NzgiLCJ1c2VybmFtZSI6IjgwODA4MCIsInBhc3N3b3JkIjoiJDJiJDEwJHpFLlVJOElrdEpWVWdkTFFKV2txaGUwVEJMZ2RBUlkuc2xyUVBWZW1RdjBZRHUzblFBTWFLIiwibmFtZSI6IlJvZG9sZm8gTWF0ZW8iLCJzdXJuYW1lIjoiTWVzc2kgQ3VjY2l0aW5uaSIsImltYWdlIjpudWxsLCJpYXQiOjE1NTA2ODU3MzEsImV4cCI6MTU1MTU0OTczMX0.jRJAuNSizMsT_1LDlTgx3O3r4LV8JaK0WqLg3_hWZB8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher/5c6d9a8acf79892c644d21e7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher",
+								"5c6d9a8acf79892c644d21e7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "808080",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "808080",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "gethash",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOTVjZTNmZDczNTJlMzg0ZWU0NzgiLCJ1c2VybmFtZSI6IjgwODA4MCIsInBhc3N3b3JkIjoiJDJiJDEwJHpFLlVJOElrdEpWVWdkTFFKV2txaGUwVEJMZ2RBUlkuc2xyUVBWZW1RdjBZRHUzblFBTWFLIiwibmFtZSI6IlJvZG9sZm8gTWF0ZW8iLCJzdXJuYW1lIjoiTWVzc2kgQ3VjY2l0aW5uaSIsImltYWdlIjpudWxsLCJpYXQiOjE1NTA2ODU3MzEsImV4cCI6MTU1MTU0OTczMX0.jRJAuNSizMsT_1LDlTgx3O3r4LV8JaK0WqLg3_hWZB8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher/5c6d95ce3fd7352e384ee478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher",
+								"5c6d95ce3fd7352e384ee478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teachers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOTVjZTNmZDczNTJlMzg0ZWU0NzgiLCJ1c2VybmFtZSI6IjgwODA4MCIsInBhc3N3b3JkIjoiJDJiJDEwJHpFLlVJOElrdEpWVWdkTFFKV2txaGUwVEJMZ2RBUlkuc2xyUVBWZW1RdjBZRHUzblFBTWFLIiwibmFtZSI6IlJvZG9sZm8gTWF0ZW8iLCJzdXJuYW1lIjoiTWVzc2kgQ3VjY2l0aW5uaSIsImltYWdlIjpudWxsLCJpYXQiOjE1NTA2ODU3MzEsImV4cCI6MTU1MTU0OTczMX0.jRJAuNSizMsT_1LDlTgx3O3r4LV8JaK0WqLg3_hWZB8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/teacher",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"teacher"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1111",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Luis Roberto",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Loya Martinez",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "verify",
+									"value": "secret_pass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Luis Ricardo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/5c6d9b72cf79892c644d21eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"5c6d9b72cf79892c644d21eb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/5c6d9cd4cf79892c644d21ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"5c6d9cd4cf79892c644d21ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1111",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "1111",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "caca",
+									"type": "text"
+								},
+								{
+									"key": "gethash",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/5c6d9b72cf79892c644d21eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"5c6d9b72cf79892c644d21eb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Admins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subir pic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/upload/5c6d9b72cf79892c644d21eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"upload",
+								"5c6d9b72cf79892c644d21eb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/admin/pic/eHDxWYrlw3gAiHLG3YMAziDJ.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"admin",
+								"pic",
+								"eHDxWYrlw3gAiHLG3YMAziDJ.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Quimica Nuclear 2",
+									"type": "text"
+								},
+								{
+									"key": "grade",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "teacher",
+									"value": "5c6d95ce3fd7352e384ee478",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grade",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "teacher",
+									"value": "5c6d95ce3fd7352e384ee478",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course/5c6d9ed8cf79892c644d21f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course",
+								"5c6d9ed8cf79892c644d21f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course/5c6d9fddcf79892c644d21f2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course",
+								"5c6d9fddcf79892c644d21f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course/5c6d9ed8cf79892c644d21f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course",
+								"5c6d9ed8cf79892c644d21f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cursos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lab",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Laboratorio 10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Laboratorio ubicado en el ala 1.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/lab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"lab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Laboratorio 12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Laboratorio ubicado en el ala 1.",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/lab/5c6da093cf79892c644d21f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"lab",
+								"5c6da093cf79892c644d21f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/lab/5c6da093cf79892c644d21f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"lab",
+								"5c6da093cf79892c644d21f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/lab/5c6da093cf79892c644d21f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"lab",
+								"5c6da093cf79892c644d21f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get labs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/lab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"lab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relacionar curso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "lab",
+									"value": "5c6da1071354071194ac3983",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course/lab/add/5c6d9ed8cf79892c644d21f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course",
+								"lab",
+								"add",
+								"5c6d9ed8cf79892c644d21f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar de curso",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "lab",
+									"value": "5c6da1071354071194ac3983",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/course/lab/del/5c6d9ed8cf79892c644d21f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"course",
+								"lab",
+								"del",
+								"5c6d9ed8cf79892c644d21f0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Material",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Matraz Aforado",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "500 ml",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Vidrio",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Matraz Aforado",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "28",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material/5c6dab2741a01e0ab4fe1e47",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material",
+								"5c6dab2741a01e0ab4fe1e47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material/5c6dacf235d941285ccc9c7e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material",
+								"5c6dacf235d941285ccc9c7e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material/5c6dab2741a01e0ab4fe1e47",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material",
+								"5c6dab2741a01e0ab4fe1e47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get materiales",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subir pic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material/upload/5c6dab2741a01e0ab4fe1e47",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material",
+								"upload",
+								"5c6dab2741a01e0ab4fe1e47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCRwQUFMSmhMeFZsZGNNc0dXLy9IWlYueWlqV3hvWG9lTjNBZXREMzZnZC9uTklSTUNQeUVqSyIsIm5hbWUiOiJMdWlzIFJvYmVydG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjpudWxsLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTU1MDY4NzIwOCwiZXhwIjoxNTUxNTUxMjA4fQ.ey-fN5VcHDrTim0k9786RZmFQSIeHAOaftVeCjtjC2Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/material/pic/JGjZvgxRnQJ_gVBZlrm51LR8.jpeg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"material",
+								"pic",
+								"JGjZvgxRnQJ_gVBZlrm51LR8.jpeg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Practice",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Practica 1",
+									"type": "text"
+								},
+								{
+									"key": "expDate",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "course",
+									"value": "5c6d9ed8cf79892c644d21f0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Practica 1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "expDate",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "course",
+									"value": "5c6d9ed8cf79892c644d21f0",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/5c6e53f9f799b056f4ca830a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"5c6e53f9f799b056f4ca830a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/5c6e514335d941285ccc9c7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"5c6e514335d941285ccc9c7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/5c6e514335d941285ccc9c7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"5c6e514335d941285ccc9c7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get practicas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subir archivo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/upload/5c6e53f9f799b056f4ca830a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"upload",
+								"5c6e53f9f799b056f4ca830a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get archivo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/file/3RbPSwI6D8wf3pp7bkgvd-Gc.pdf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"file",
+								"3RbPSwI6D8wf3pp7bkgvd-Gc.pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add materiales",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "material",
+									"value": "5c6dab2741a01e0ab4fe1e47",
+									"type": "text"
+								},
+								{
+									"key": "material",
+									"value": "5c6e5a1da4acd75d6c1fed42",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/mat/5c6e53f9f799b056f4ca830a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"mat",
+								"5c6e53f9f799b056f4ca830a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar material",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "material",
+									"value": "5c6dab2741a01e0ab4fe1e47",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/mat/5c6e53f9f799b056f4ca830a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"mat",
+								"5c6e53f9f799b056f4ca830a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get practicas expiradas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/expired",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"expired"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get practicas activas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/practice/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"practice",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Home curso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/home/5c6d9ed8cf79892c644d21f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"home",
+								"5c6d9ed8cf79892c644d21f0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "5c6d91b89442c10578aa2a87",
+									"type": "text"
+								},
+								{
+									"key": "practice",
+									"value": "5c6e53f9f799b056f4ca830a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/order/5c6e65a0f7a66d59c03f8657",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"order",
+								"5c6e65a0f7a66d59c03f8657"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/order/5c6e64d1f7a66d59c03f8656",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"order",
+								"5c6e64d1f7a66d59c03f8656"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ordenes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ban",
+			"item": [
+				{
+					"name": "Ban usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "order",
+									"value": "5c6e6700f7a66d59c03f865a",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Entrega",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/ban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"ban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "order",
+									"value": "5c6e6700f7a66d59c03f865a",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Material danado",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/ban/5c6e68a9abe9930fa49bd03b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"ban",
+								"5c6e68a9abe9930fa49bd03b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quitar ban",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/ban/5c6e68a9abe9930fa49bd03b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"ban",
+								"5c6e68a9abe9930fa49bd03b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/ban/5c6e68a9abe9930fa49bd03b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"ban",
+								"5c6e68a9abe9930fa49bd03b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get vetados",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1YzZkOWI3MmNmNzk4OTJjNjQ0ZDIxZWIiLCJ1c2VybmFtZSI6IjExMTEiLCJwYXNzd29yZCI6IiQyYiQxMCQ3OUQ3RVJCNmdYQjcyR3h1YlBvazB1NWdmNFowQTF3V0xlZnFVRFNzOWE2ekUuQkx6SFZHYSIsIm5hbWUiOiJMdWlzIFJpY2FyZG8iLCJzdXJuYW1lIjoiTG95YSBNYXJ0aW5leiIsImltYWdlIjoiZUhEeFdZcmx3M2dBaUhMRzNZTUF6aURKLmpwZyIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNTUwNzIyMzg0LCJleHAiOjE1NTE1ODYzODR9.7OINrJsZDzEU3KawrbgeVDDhAHNPwxjuoElFzYy8qPE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3977/api/ban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3977",
+							"path": [
+								"api",
+								"ban"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

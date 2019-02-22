@@ -14,6 +14,8 @@ var path = require('path');
 // Model(s)
 var Practice = require('../models/practice');
 var Course = require('../models/course');
+var Order = require('../models/order');
+var Ban = require('../models/ban');
 
 // Misc
 const apiMsg = 'Server Error.'
@@ -110,6 +112,7 @@ function updatePractice(req, res){
 // Removes practice
 function deletePractice(req, res){
     var pracId = req.params.id;
+    var path_file = './uploads/practices/';
 
     if(req.user.grade){
         return res.status(403).send({message:"Acceso denegado."});
@@ -122,7 +125,36 @@ function deletePractice(req, res){
             if(!delPrac){
                 res.status(404).send({message:"Error al eliminar."});
             }else{
-                res.status(200).send(delPrac);
+                // DELETE ON CASCADE
+                // Practice=>Order=>Ban
+                Order.find({practice:delPrac._id}).deleteOne((err, orderRm)=>{
+                    if(err){
+                        res.status(500).send({message:apiMsg}); 
+                    }else{
+                        if(!orderRm){
+                            res.status(404).send({message:"Error al eliminar."});
+                        }else{
+                            Ban.find({order: orderRm._id}).deleteOne((err, banRm)=>{
+                                if(err){
+                                    res.status(500).send({message:apiMsg});
+                                }else{
+                                    if(!banRm){
+                                        res.status(404).send({message:"Error al eliminar."});
+                                    }else{
+                                        path_file = path_file + delPrac.file;
+                                        fs.unlink(path_file, (err)=>{
+                                            if(err){
+                                                res.status(500).send({message:"Error al subir archivo."});
+                                            }
+                                            //console.log('Successfully deleted file.');
+                                        });
+                                        res.status(200).send(delPrac);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
             }
         }
     });
